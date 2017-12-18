@@ -7,7 +7,7 @@ Install
     npm install
     npm run lint
     npm run build
-    npm start:pm2
+    npm run start:pm2
 
 ## License
 
