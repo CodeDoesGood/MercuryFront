@@ -54,6 +54,11 @@ const volunteerEndpoint = endpoint({
     const options = utils.buildOptions(this.apiUrl, `${this.path}/notification/${id}`, 'get', {});
     return this.apiCall(options);
   },
+
+  getAnnouncements() {
+    const options = utils.buildOptions(this.apiUrl, `${this.path}/announcements`, 'get', {});
+    return this.apiCall(options);
+  },
   
   dismissNotification(id) {
     const options = utils.buildOptions(this.apiUrl, `${this.path}/notification/${id}`, 'delete', {});
