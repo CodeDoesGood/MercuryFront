@@ -13,11 +13,11 @@ const projectEndpoint = endpoint({
     const options = utils.buildOptions(this.apiUrl, `${this.path}/${projectId}`, 'post', {});
     return this.apiCall(options);
   },
-  
+
   create(project) {
     const options = utils.buildOptions(this.apiUrl, `${this.path}/`, 'post', { project });
     return this.apiCall(options);
-  }
+  },
 });
 
 export default projectEndpoint;

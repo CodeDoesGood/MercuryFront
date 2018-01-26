@@ -5,33 +5,33 @@ const emailEndpoint = endpoint({
   apiUrl: utils.API_URL,
   path: 'email',
 
-  //*******************
+  //* ******************
   // Service
-  //*******************
+  //* ******************
 
   getService() {
     const options = utils.buildOptions(this.apiUrl, `${this.path}/service`, 'get', {});
     return this.apiCall(options);
   },
-  
+
   restartService() {
     const options = utils.buildOptions(this.apiUrl, `${this.path}/service/restart`, 'get', {});
     return this.apiCall(options);
   },
-  
-  updateServiceService(user, service, secure=true) {
+
+  updateServiceService(user, service, secure = true) {
     const options = utils.buildOptions(this.apiUrl, `${this.path}/service`, 'post', { user, service, secure });
     return this.apiCall(options);
   },
-  
+
   updateServicePassword(password) {
     const options = utils.buildOptions(this.apiUrl, `${this.path}/service/password`, 'post', { password });
     return this.apiCall(options);
   },
-  
-  //*******************
+
+  //* ******************
   // Stored
-  //*******************
+  //* ******************
 
   removeStored(storedId) {
     const options = utils.buildOptions(this.apiUrl, `${this.path}/stored/${storedId}`, 'delete', {});

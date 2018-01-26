@@ -21,6 +21,7 @@ export default function endpointApi(token = null) {
 
   return {
     apiCall,
+    infra: infrastructureEndpoint,
     slack: slackEndpiont,
     email: emailEndpoint,
     project: projectEndpoint,
