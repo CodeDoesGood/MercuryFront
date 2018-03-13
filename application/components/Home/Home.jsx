@@ -126,6 +126,7 @@ Home.propTypes = {
     result: PropTypes.bool,
   }).isRequired,
   volunteer: PropTypes.shape().isRequired,
+  classes: PropTypes.shape().isRequired,
   updateAnnouncements: PropTypes.func.isRequired,
   updateNotifications: PropTypes.func.isRequired,
   notifications: PropTypes.arrayOf(PropTypes.shape()).isRequired,

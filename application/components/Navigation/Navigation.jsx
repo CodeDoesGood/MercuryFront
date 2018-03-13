@@ -41,15 +41,23 @@ function Navigation(props) {
           <Toolbar>
             <Typography variant="title" color="inherit" className={classes.flex}>&lt; CodeDoesGood /&gt;</Typography>
             <Link href to={routes.home}><Button className={classes.navButton}>Home</Button></Link>
-            <Badge color="primary" badgeContent={2} className={classes.margin}>
-              <Link href to={routes.projects}><Button className={classes.navButton}>Projects</Button></Link>
+            <Badge color="primary" badgeContent={props.totalProjects} className={classes.margin}>
+              <Link href to={routes.projects}>
+                <Button className={classes.navButton}>Projects</Button>
+              </Link>
             </Badge>
             <Button className={classes.navButton}>Community</Button>
-            <Link href to={routes.contactUs}><Button className={classes.navButton}>Contact</Button></Link>
-            <Link href to={routes.myProfile}>
-              <Button className={classes.navButton}><Icon className={classes.icon}>person</Icon>{props.authentication.username}</Button>
+            <Link href to={routes.contactUs}>
+              <Button className={classes.navButton}>Contact</Button>
             </Link>
-            <Link href to={routes.signOut}><Button className={classes.navButton}>Sign out</Button></Link>
+            <Link href to={routes.myProfile}>
+              <Button className={classes.navButton}>
+                <Icon className={classes.icon}>person</Icon>{props.authentication.username}
+              </Button>
+            </Link>
+            <Link href to={routes.signOut}>
+              <Button className={classes.navButton}>Sign out</Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </div>
@@ -62,10 +70,14 @@ function Navigation(props) {
           <Typography variant="title" color="inherit" className={classes.flex}>&lt; CodeDoesGood /&gt;</Typography>
           <Link href to={routes.home}><Button className={classes.navButton}>Home</Button></Link>
           <Badge color="primary" badgeContent={props.totalProjects} className={classes.margin}>
-            <Link href to={routes.projects}><Button className={classes.navButton}>Projects</Button></Link>
+            <Link href to={routes.projects}>
+              <Button className={classes.navButton}>Projects</Button>
+            </Link>
           </Badge>
           <Button className={classes.navButton}>Community</Button>
-          <Link href to={routes.contactUs}><Button className={classes.navButton}>Contact</Button></Link>
+          <Link href to={routes.contactUs}>
+            <Button className={classes.navButton}>Contact</Button>
+          </Link>
           <Link href to={routes.login}><Button className={classes.navButton}>Login</Button></Link>
         </Toolbar>
       </AppBar>
@@ -76,8 +88,10 @@ function Navigation(props) {
 Navigation.propTypes = {
   authentication: PropTypes.shape({
     username: PropTypes.string,
+    result: PropTypes.bool,
   }).isRequired,
   classes: PropTypes.shape().isRequired,
+  totalProjects: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(Navigation);

@@ -39,7 +39,7 @@ export default class Application extends React.Component {
       <Router>
         <MuiThemeProvider theme={theme}>
           <div className={style.applicationScale}>
-            <Header totalProjects={this.props.projects.length} authentication={this.props.authentication} logo="/components/img/logo.png"/>
+            <Header totalProjects={this.props.projects.length} authentication={this.props.authentication} logo="/components/img/logo.png" />
             <Route
               exact
               path="/"
@@ -63,7 +63,7 @@ export default class Application extends React.Component {
             />
             <Route
               path={this.routePaths.signOut}
-              render={history => <SignOut history={history.history}/>}
+              render={history => <SignOut history={history.history} />}
             />
             <Route
               path={this.routePaths.reset}
