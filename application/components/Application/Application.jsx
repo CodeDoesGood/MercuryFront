@@ -1,10 +1,10 @@
-
+import createBrowserHistory from 'history/createBrowserHistory';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import * as routePaths from './routePaths';
-
 import Header from '../Layout/Header';
 
 import Login from '../Login/Login';
@@ -17,11 +17,19 @@ import Projects from '../Projects/Projects';
 
 import style from './application.less';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#f57a23' }, // This is just green.A700 as hex.
+    secondary: { main: '#4A4A4A' }, // Purple and green play nicely together.
+  },
+});
+
 export default class Application extends React.Component {
   constructor(props) {
     super(props);
 
     this.routePaths = routePaths;
+    this.history = createBrowserHistory();
   }
 
   render() {
@@ -29,63 +37,65 @@ export default class Application extends React.Component {
 
     return (
       <Router>
-        <div className={style.applicationScale}>
-          <Header logo="/components/img/logo.png" />
-          <Route
-            exact
-            path="/"
-            render={() => (<Home
-              volunteer={client.volunteer}
-              announcements={this.props.announcements}
-              notifications={this.props.notifications}
-              authentication={this.props.authentication}
-              updateNotifications={this.props.updateNotifications}
-              updateAnnouncements={this.props.updateAnnouncements}
-            />)}
-          />
-          <Route
-            path={this.routePaths.login}
-            render={history => (<Login
-              history={history.history}
-              client={client}
-              authenticating={authenticating}
-              updateVolunteerProfile={this.props.updateVolunteerProfile}
-            />)}
-          />
-          <Route
-            path={this.routePaths.signOut}
-            render={history => <SignOut history={history.history} />}
-          />
-          <Route
-            path={this.routePaths.reset}
-            render={props => <Reset volunteer={client.volunteer} {...props} />}
-          />
-          <Route
-            path={this.routePaths.verify}
-            render={props => <Verify volunteer={client.volunteer} {...props} />}
-          />
-          <Route
-            path={this.routePaths.projects}
-            render={() => (<Projects
-              projectsClient={client.projects}
-              authentication={this.props.authentication}
-              updateProjects={this.props.updateProjects}
-              removeProject={this.props.removeProject}
-              projects={this.props.projects}
-            />)}
-          />
-          <Route
-            path={this.routePaths.myProfile}
-            render={history => (<Profile
-              volunteer={client.volunteer}
-              authentication={this.props.authentication}
-              updateVolunteerProfile={this.props.updateVolunteerProfile}
-              removeVolunteerProfile={this.props.removeVolunteerProfile}
-              profile={this.props.profile}
-              history={history.history}
-            />)}
-          />
-        </div>
+        <MuiThemeProvider theme={theme}>
+          <div className={style.applicationScale}>
+            <Header totalProjects={this.props.projects.length} authentication={this.props.authentication} logo="/components/img/logo.png"/>
+            <Route
+              exact
+              path="/"
+              render={() => (<Home
+                volunteer={client.volunteer}
+                announcements={this.props.announcements}
+                notifications={this.props.notifications}
+                authentication={this.props.authentication}
+                updateNotifications={this.props.updateNotifications}
+                updateAnnouncements={this.props.updateAnnouncements}
+              />)}
+            />
+            <Route
+              path={this.routePaths.login}
+              render={history => (<Login
+                history={history.history}
+                client={client}
+                authenticating={authenticating}
+                updateVolunteerProfile={this.props.updateVolunteerProfile}
+              />)}
+            />
+            <Route
+              path={this.routePaths.signOut}
+              render={history => <SignOut history={history.history}/>}
+            />
+            <Route
+              path={this.routePaths.reset}
+              render={props => <Reset volunteer={client.volunteer} {...props} />}
+            />
+            <Route
+              path={this.routePaths.verify}
+              render={props => <Verify volunteer={client.volunteer} {...props} />}
+            />
+            <Route
+              path={this.routePaths.projects}
+              render={() => (<Projects
+                projectsClient={client.projects}
+                authentication={this.props.authentication}
+                updateProjects={this.props.updateProjects}
+                removeProject={this.props.removeProject}
+                projects={this.props.projects}
+              />)}
+            />
+            <Route
+              path={this.routePaths.myProfile}
+              render={history => (<Profile
+                volunteer={client.volunteer}
+                authentication={this.props.authentication}
+                updateVolunteerProfile={this.props.updateVolunteerProfile}
+                removeVolunteerProfile={this.props.removeVolunteerProfile}
+                profile={this.props.profile}
+                history={history.history}
+              />)}
+            />
+          </div>
+        </MuiThemeProvider>
       </Router>
     );
   }
