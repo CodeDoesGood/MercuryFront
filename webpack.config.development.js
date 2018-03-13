@@ -8,6 +8,7 @@ const config = {
   entry: `${APP_DIR}/index.jsx`,
   output: {
     path: BUILD_DIR,
+    publicPath: 'components/js',
     filename: 'bundle.js',
   },
   module: {
