@@ -1,14 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Navigation from '../Navigation/Navigation';
 
-const style = require('./header.less');
-
-export default function Header() {
+export default function Header(props) {
   return (
     <header className="Header">
-      <div className={style.headerBox}>
-        <span className={style.headerText}><Link href to="/">&lt; Code Does Good /&gt;</Link></span>
+      <div>
+        <Navigation totalProjects={props.totalProjects} authentication={props.authentication} />
       </div>
     </header>
   );
 }
+
+Header.propTypes = {
+  authentication: PropTypes.shape({
+    username: PropTypes.string,
+    result: PropTypes.bool,
+  }).isRequired,
+  totalProjects: PropTypes.number.isRequired,
+};

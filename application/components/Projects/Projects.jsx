@@ -1,12 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Paper from 'material-ui/Paper';
 
 import Project from './Project/Project';
 
-import style from './projects.less';
+const styles = theme => ({
+  root: {
+    maxWidth: '75%',
+    margin: '0 auto',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+});
 
-export default class Projects extends React.Component {
+class Projects extends React.Component {
   constructor(props) {
     super(props);
 
@@ -27,24 +40,24 @@ export default class Projects extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <div className={style.welcomeProjects}>Projects</div>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Status</th>
-              <th>Category</th>
-              <th>Platforms</th>
-              <th>Latest Activity</th>
-            </tr>
-          </thead>
-          <tbody>
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Title</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell>Category</TableCell>
+              <TableCell>Platforms</TableCell>
+              <TableCell>Latest Activity</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {this.projectTables()}
-          </tbody>
-        </table>
-      </div>
+          </TableBody>
+        </Table>
+      </Paper>
     );
   }
 }
@@ -53,4 +66,7 @@ Projects.propTypes = {
   updateProjects: PropTypes.func.isRequired,
   projects: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   projectsClient: PropTypes.shape().isRequired,
+  classes: PropTypes.shape().isRequired,
 };
+
+export default withStyles(styles)(Projects);

@@ -1,6 +1,7 @@
 export const reset = '/reset/:username/:code';
 export const verify = '/verify/:username/:code';
 
+export const home = '/';
 export const login = '/login';
 export const signOut = '/signout';
 export const projects = '/projects';

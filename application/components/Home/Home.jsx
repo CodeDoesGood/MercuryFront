@@ -1,13 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
 
 import Notifications from './Notifications/Notifications';
-import Navigation from '../Navigation/Navigation';
 import Announcements from './Announcements/Announcements';
 
 const style = require('./home.less');
 
-export default class Home extends React.Component {
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    margin: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
+
+class Home extends React.Component {
   constructor(props) {
     super(props);
 
@@ -64,13 +79,42 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div>
         <div className={style.homeTitle}>Volunteer Home</div>
-        {this.displayWelcomeMessage()}
-        {this.displayAnnouncements()}
-        {this.displayNotifications()}
-        <Navigation authentication={this.props.authentication} />
+        <div className={classes.root}>
+          <Grid container spacing={24}>
+            <Grid item xs={6}>
+              <Grid item xs={12}>
+                <Typography className={classes.text} compnent="span">
+                  Announcements
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>Announcement</Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>Announcement</Paper>
+              </Grid>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography className={classes.text} compnent="span">
+                Notifications
+              </Typography>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>Notifications</Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>Notifications</Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>Notifications</Paper>
+              </Grid>
+            </Grid>
+          </Grid>
+        </div>
       </div>
     );
   }
@@ -82,8 +126,11 @@ Home.propTypes = {
     result: PropTypes.bool,
   }).isRequired,
   volunteer: PropTypes.shape().isRequired,
+  classes: PropTypes.shape().isRequired,
   updateAnnouncements: PropTypes.func.isRequired,
   updateNotifications: PropTypes.func.isRequired,
   notifications: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   announcements: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
+
+export default withStyles(styles)(Home);

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { TableCell, TableRow } from 'material-ui/Table';
 
 export default class Project extends React.Component {
   constructor(props) {
@@ -17,13 +18,13 @@ export default class Project extends React.Component {
 
   render() {
     return (
-      <tr>
-        <td>{this.title}</td>
-        <td>{this.status}</td>
-        <td>{this.project_category}</td>
-        <td>{this.platforms}</td>
-        <td>{this.last_activity}</td>
-      </tr>
+      <TableRow>
+        <TableCell>{this.title}</TableCell>
+        <TableCell>{this.status}</TableCell>
+        <TableCell>{this.project_category}</TableCell>
+        <TableCell>{this.platforms}</TableCell>
+        <TableCell>{this.last_activity}</TableCell>
+      </TableRow>
     );
   }
 }

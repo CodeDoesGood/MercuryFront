@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const BUILD_DIR = path.resolve(__dirname, 'public/components/js');
 const APP_DIR = path.resolve(__dirname, 'application');
@@ -43,7 +44,15 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  plugins: [],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+  devServer: {
+    hot: true,
+    contentBase: './public',
+    historyApiFallback: true,
+    host: '0.0.0.0',
+  },
 };
 
 module.exports = config;
