@@ -1,7 +1,8 @@
+/* eslint-disable quotes,react/no-unescaped-entities */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
+import Avatar from 'material-ui/Avatar';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 
@@ -25,6 +26,13 @@ const styles = theme => ({
   profileCentre: {
     margin: ' auto',
     textAlign: 'center',
+  },
+  avatar: {
+    margin: '0 auto',
+    marginTop: theme.spacing.unit * 5,
+    textAlign: 'center',
+    width: theme.spacing.unit * 12,
+    height: theme.spacing.unit * 12,
   },
 });
 
@@ -52,10 +60,14 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <div>Profile</div>
         <div className={classes.root}>
           <div className={classes.profileCentre}>
-            <Typography variant="headline">{this.props.profile.username}</Typography>
+            <Avatar
+              alt={this.props.profile.name}
+              src={this.props.profile.picture_url === "" ? "/components/images/placeholder.png" : this.props.profile.picture_url}
+              className={classes.avatar}
+            />
+            <Typography variant="headline">{this.props.profile.name}</Typography>
             <Typography variant="headline">{this.props.profile.developer_level === '' ? 'Volunteer' : this.props.profile.developer_level}</Typography>
             <Typography variant="subheading" component="div"><span className={classes.phoneText}>Cell Phone: </span>{this.props.profile.phone === '' ? '(333) 333-3333' : this.props.profile.phone}</Typography>
             <Typography variant="subheading" component="div"><span className={classes.phoneText}>Home Phone: </span>{this.props.profile.phone === '' ? '(4444) 4444-44444' : this.props.profile.phone}</Typography>
@@ -64,14 +76,20 @@ class Profile extends React.Component {
             <Grid item xs>
               <div>
                 <Typography variant="headline" component="div" className={classes.paper}>about</Typography>
-                <Typography variant="body2" component="p" className={classes.paper}>{this.props.profile.about}</Typography>
+                <Typography variant="body2" component="p" className={classes.paper}>
+                  {this.props.profile.about === "" ? 'No about' : this.props.profile.about}
+                </Typography>
               </div>
             </Grid>
             <Grid item xs>
               <Typography variant="headline" component="p" className={classes.paper}>skills</Typography>
+              <Typography variant="body2" component="p" className={classes.paper}>We currently don't track skills</Typography>
             </Grid>
             <Grid item xs>
               <Typography variant="headline" component="p" className={classes.paper}>projects</Typography>
+              <Typography variant="body2" component="p" className={classes.paper}>
+                We currently don't support tracking user projects
+              </Typography>
             </Grid>
           </Grid>
         </div>
@@ -98,6 +116,7 @@ Profile.propTypes = {
     slack_id: PropTypes.string,
     timezone: PropTypes.string,
     username: PropTypes.string,
+    picture_url: PropTypes.string,
     verified: PropTypes.number,
     volunteer_id: PropTypes.number,
     volunteer_status: PropTypes.string,
