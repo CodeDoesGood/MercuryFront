@@ -63,26 +63,6 @@ function Navigation(props) {
       </div>
     );
   }
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="secondary" className={classes.paddingAbove}>
-        <Toolbar>
-          <Typography variant="title" color="inherit" className={classes.flex}>&lt; CodeDoesGood /&gt;</Typography>
-          <Link href to={routes.home}><Button className={classes.navButton}>Home</Button></Link>
-          <Badge color="primary" badgeContent={props.totalProjects} className={classes.margin}>
-            <Link href to={routes.projects}>
-              <Button className={classes.navButton}>Projects</Button>
-            </Link>
-          </Badge>
-          <Button className={classes.navButton}>Community</Button>
-          <Link href to={routes.contactUs}>
-            <Button className={classes.navButton}>Contact</Button>
-          </Link>
-          <Link href to={routes.login}><Button className={classes.navButton}>Login</Button></Link>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
 }
 
 Navigation.propTypes = {

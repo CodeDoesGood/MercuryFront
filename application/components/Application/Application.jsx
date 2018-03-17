@@ -7,7 +7,7 @@ import React from 'react';
 import * as routePaths from './routePaths';
 import Header from '../Layout/Header';
 
-import Login from '../Login/Login';
+import Login from '../Login/Login2';
 import SignOut from '../Login/SignOut';
 import Reset from '../Reset/Reset';
 import Verify from '../Verify/Verify';
@@ -34,6 +34,34 @@ export default class Application extends React.Component {
 
   render() {
     const { authenticating, client } = this.props;
+
+    if (!this.props.authentication.result) {
+      return (
+        <Router>
+          <MuiThemeProvider theme={theme}>
+            <div className={style.applicationScale}>
+              <Route
+                path="/"
+                render={history => (<Login
+                  history={history.history}
+                  client={client}
+                  authenticating={authenticating}
+                  updateVolunteerProfile={this.props.updateVolunteerProfile}
+                />)}
+              />
+              <Route
+                path={this.routePaths.reset}
+                render={props => <Reset volunteer={client.volunteer} {...props} />}
+              />
+              <Route
+                path={this.routePaths.verify}
+                render={props => <Verify volunteer={client.volunteer} {...props} />}
+              />
+            </div>
+          </MuiThemeProvider>
+        </Router>
+      );
+    }
 
     return (
       <Router>

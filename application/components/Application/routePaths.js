@@ -3,6 +3,8 @@ export const verify = '/verify/:username/:code';
 
 export const home = '/';
 export const login = '/login';
+export const register = '/register';
+export const forgotten = '/forgotten';
 export const signOut = '/signout';
 export const projects = '/projects';
 export const contactUs = '/contactus';
