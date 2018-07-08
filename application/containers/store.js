@@ -18,12 +18,6 @@ const defaultState = {
   client,
 };
 
-const store = createStore(
-  rootReducer,
-  defaultState,
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
-
+const store = createStore(rootReducer, defaultState);
 
 export default store;

@@ -18,11 +18,18 @@ const config = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['env', {
-                targets: {
-                  browsers: ['last 2 versions'],
+              [
+                'env',
+                {
+                  targets: {
+                    browsers: ['last 2 versions'],
+                  },
                 },
-              }], 'babel-preset-react',
+              ],
+              'babel-preset-react',
+              'es2015',
+              'react',
+              'stage-2',
             ],
             babelrc: false,
             comments: false,
@@ -46,4 +53,3 @@ const config = {
 };
 
 module.exports = config;
-

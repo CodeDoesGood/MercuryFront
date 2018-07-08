@@ -2,7 +2,7 @@ import * as apiCall from './apiCall';
 import utils from './utils';
 
 import infrastructureEndpoint from './endpoints/infrastructureEndpoint';
-import slackEndpoint from './endpoints/slackEndpoint';
+import slackEndpiont from './endpoints/slackEndpoint';
 import emailEndpoint from './endpoints/emailEndpoint';
 import projectEndpoint from './endpoints/projectEndpoint';
 import volunteerEndpoint from './endpoints/volunteerEndpoint';
@@ -22,7 +22,7 @@ export default function endpointApi(token = null) {
   return {
     apiCall,
     infra: infrastructureEndpoint,
-    slack: slackEndpoint,
+    slack: slackEndpiont,
     email: emailEndpoint,
     project: projectEndpoint,
     volunteer: volunteerEndpoint,

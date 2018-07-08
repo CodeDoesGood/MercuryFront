@@ -31,12 +31,7 @@ const volunteerEndpoint = endpoint({
   // Profile
   //* *******************************
 
-  getPartialProfile(id) {
-    const options = utils.buildOptions(this.apiUrl, `${this.path}/profile/${id}`, 'get', {});
-    return this.apiCall(options);
-  },
-
-  getCompleteProfile() {
+  getProfile() {
     const options = utils.buildOptions(this.apiUrl, `${this.path}/profile`, 'get', {});
     return this.apiCall(options);
   },

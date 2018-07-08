@@ -5,7 +5,7 @@ const BUILD_DIR = path.resolve(__dirname, 'public/components/js');
 const APP_DIR = path.resolve(__dirname, 'application');
 
 const config = {
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   entry: `${APP_DIR}/index.jsx`,
   output: {
     path: BUILD_DIR,
@@ -21,11 +21,18 @@ const config = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['env', {
-                targets: {
-                  browsers: ['last 2 versions'],
+              [
+                'env',
+                {
+                  targets: {
+                    browsers: ['last 2 versions'],
+                  },
                 },
-              }], 'babel-preset-react',
+              ],
+              'babel-preset-react',
+              'es2015',
+              'react',
+              'stage-2',
             ],
             babelrc: false,
             comments: true,
@@ -44,16 +51,14 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     hot: true,
     contentBase: './public',
     historyApiFallback: true,
     host: '0.0.0.0',
+    port: 8080,
   },
 };
 
 module.exports = config;
-

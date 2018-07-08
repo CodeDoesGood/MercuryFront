@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './loading.less';
+// import style from './loading.less';
 
 export default function Loading() {
   return (
