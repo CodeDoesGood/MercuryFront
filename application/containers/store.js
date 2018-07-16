@@ -1,23 +1,13 @@
+/* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
-import endpoints from '../endpoints/index';
 import rootReducer from '../reducers/index';
-
-const authentication = { username: null, result: false };
-
-// announcements and notifications
-const announcements = [];
-const notifications = [];
-
-const client = endpoints();
+import { version } from '../../package.json';
 
 const defaultState = {
-  authentication,
-  announcements,
-  notifications,
-  client,
+  version,
 };
 
-const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer, defaultState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;

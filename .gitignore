@@ -33,4 +33,12 @@ node_modules
 
 # bundle react
 bundle.js
+
+# firebase
+.vscode
+
+# admin panel
+serviceAccount.ts
+dist
 package-lock.json
+packages/server/src/components/service.json

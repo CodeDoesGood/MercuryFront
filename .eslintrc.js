@@ -16,6 +16,7 @@ module.exports = {
     'prefer-promise-reject-errors': 0,
     'no-debugger': 0,
     'arrow-parens': 0,
+    'jsx-one-expression-per-line': 0,
   },
   globals: {
     describe: 0,
