@@ -16,6 +16,19 @@ const styles = (theme) => ({
   },
   flex: {
     flexGrow: 1,
+    fontFamily: 'Rubik',
+    fontWeight: '400',
+    '-webkit-font-smoothing': 'antialiased',
+    textTransform: 'uppercase',
+    fontSize: '14px',
+    lineHeight: '17px',
+  },
+  logo: {
+    flexGrow: 1,
+    fontFamily: 'Rubik',
+    fontWeight: '100',
+    textTransform: 'uppercase',
+    lineHeight: '17px',
   },
   menuButton: {
     marginLeft: -12,
@@ -37,12 +50,24 @@ class Navigation extends React.Component {
       <div>
         <AppBar position="static" color="primary" className={classes.root}>
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
+            <IconButton className={classes.logo} color="inherit">
+              &lt; CodeDoesGood /&gt;
             </IconButton>
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Button color="inherit" className={classes.flex}>
               Home
-            </Typography>
+            </Button>
+            <Button color="inherit" className={classes.flex}>
+              Projects
+            </Button>
+            <Button color="inherit" className={classes.flex}>
+              Community
+            </Button>
+            <Button color="inherit" className={classes.flex}>
+              Contact
+            </Button>
+            <Button color="inherit" className={classes.flex}>
+              User
+            </Button>
             <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>

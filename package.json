@@ -37,12 +37,6 @@
   "devDependencies": {
     "babel-eslint": "^8.2.6",
     "babel-preset-flow": "^6.23.0",
-    "eslint": "^5.1.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "eslint-plugin-sort-requires": "^2.1.0",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.0.8",
     "webpack-dashboard": "^2.0.0",

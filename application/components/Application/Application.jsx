@@ -18,10 +18,10 @@ import Navigation from '../Navigation';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#2e2459',
+      main: 'rgb(2, 50, 119)',
     }, // This is just green.A700 as hex.
     secondary: {
-      main: '#64cb3b',
+      main: 'rgb(0, 221, 124)',
     }, // Purple and green play nicely together.
   },
 });
